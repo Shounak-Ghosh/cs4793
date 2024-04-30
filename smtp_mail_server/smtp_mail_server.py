@@ -40,7 +40,7 @@ print("data: ",data_resp)
 subject = 'Subject: SMTP Mail Client Test\r\n'
 clientSocket.send(subject.encode())
 clientSocket.send('\r\n'.encode())
-clientSocket.send('computer networking is cool\r\n'.encode())
+clientSocket.send('I love computer networks!\r\n'.encode())
 
 # Message ends with a single period
 endMessage = '.\r\n'
