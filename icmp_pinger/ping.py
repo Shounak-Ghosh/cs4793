@@ -128,6 +128,7 @@ def ping(host, timeout=1):
     numPackets = 0
     minRTT = doOnePing(dest,timeout) # minimum round trip time
     maxRTT = 0 # maximum round trip time
+    totalRTT = 0
     print("Pinging " + dest + " using Python:\n")
     # Send ping requests to a server separated by approximately one second
     try:
@@ -136,12 +137,13 @@ def ping(host, timeout=1):
             numPackets += 1
             minRTT = min(minRTT, delay)
             maxRTT = max(maxRTT, delay)
+            totalRTT += delay
             print(delay)
             time.sleep(1)  # one second
         return delay
     except KeyboardInterrupt:
         print("\nExiting...")
-        print("Packets sent:", numPackets, "Min RTT:", minRTT, "Max RTT:", maxRTT)
+        print("Packets sent:", numPackets, "Min RTT:", minRTT, "Max RTT:", maxRTT, "Avg RTT:", totalRTT/numPackets)
         sys.exit(0)
 
 
